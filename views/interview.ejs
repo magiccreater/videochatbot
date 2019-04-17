@@ -1,0 +1,41 @@
+<% include _layouts/header %>
+
+<%if(p.status=='pending'){ %>
+        <div class="row">
+    
+        
+        <div class="col-sm-12 intro form-group">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="interviwer_name" name="name" class="form-control" placeholder="Name">
+                <input type="hidden" id="id" name="id" value="<%= p.id%>"/>
+            </div>
+            <button type="button" id="startInterview" class="btn btn-default">Proceed</button>
+        </div>
+        
+        <div class="col-md-12 recordVideo">
+            
+            
+            
+        </div>
+    
+    
+    <!-- <div class="col-xs-12 col-md-5">
+      <%= p.emailid %>
+        
+      <%= p.skypeid %>
+        
+    </div> -->
+</div>
+<% }else{ %>
+    <div class="row">
+    
+        
+            <div class="col-sm-12 intro form-group">
+                <p>
+                    This link is expired. Kindly Contact your consultant.
+                </p>
+            </div
+    ></div>
+<% } %>
+<% include _layouts/footer %>

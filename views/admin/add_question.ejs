@@ -1,0 +1,32 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Add a Question</h2>
+<a href="/admin/interviews" class="btn btn-primary">Back to all question</a>
+<br><br>
+
+<form method="post" action="/admin/questions/add-question" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="">Intent Name</label>
+    <input type="text" class="form-control" name="displayName" value="<%= displayName %>" placeholder="Intent Name">
+    </div>
+
+    <div class="form-group">
+      <label for="">SkypeId</label>
+      <input type="text" class="form-control" name="trainingPhrasesParts" value="<%= trainingPhrasesParts %>" placeholder="Question">
+    </div>
+
+
+      <div class="form-group">
+        <label for="">CellNumber</label>
+        <input type="text" class="form-control" name="messageTexts" value="<%= messageTexts %>" placeholder="Renponse Text">
+    </div>
+
+
+
+
+        <button class="btn btn-default">Submit</button>
+</form>
+
+
+<%- include('../_layouts/adminfooter') %>

@@ -1,0 +1,73 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Interviews</h2>
+<a href="/admin/interviews/add-interview" class="btn btn-primary">Schedule an interview</a>
+<br><br>
+
+<% if (count > 0) { %>
+
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>EmailId</th>
+            <th>SkypeId</th>
+            <th>CellNumber</th>
+
+            <th>Status</th>
+            <th>View Interview</th>
+            <!-- <th>Edit</th> -->
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% interviews.forEach(function(interview){ %>
+        <tr>
+            <td><%= interview.emailid %></td>
+            <td><%= interview.skypeid %></td>
+            <td><%= interview.cellnumber %></td>
+
+            <td><%= interview.status %></td>
+            <td><a href="#" onclick="getVideoId(this.id);" data-toggle="modal" data-target="#myModal" id="<%= interview._id %>">Interview</a></td>
+           <!--  <td><a href="/interviews/edit-interview/<%= interview._id %>">Edit</a></td> -->
+            <td><a class="confirmDeletion" href="/admin/interviews/delete-interview/<%= interview._id %>">Delete</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<% } else {%>
+<h3 class="text-center">There are no interviews.</h3>
+<% }%>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Review Interview</h4>
+            </div>
+            <div class="modal-body">
+                    
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+      
+        </div>
+</div>
+<script>
+    function getVideoId(a){
+        $('#myModal .modal-body').html('<video controls width="100%" poster="poster.png"><source src="https://s3.amazonaws.com/virtualinterviewroom/'+a+'.webm" type="video/webm;" codecs="vp8, vorbis" /><track src="https://s3.amazonaws.com/virtualinterviewroom/'+a+'.vtt" label="English subtitles" kind="subtitles" srclang="en" default></track></video>');
+        return true;
+    }
+    
+    $('#myModal').on('hidden.bs.modal', function () {
+        $('#myModal .modal-body').empty();
+     });
+</script>
+<%- include('../_layouts/adminfooter') %>

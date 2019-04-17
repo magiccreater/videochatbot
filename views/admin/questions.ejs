@@ -1,0 +1,62 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Questions</h2>
+<a href="/admin/questions/add-question" class="btn btn-primary">Add Question</a>
+<br><br>
+
+<% if (count > 0) { %>
+
+<table class="table table-striped alignmiddle">
+
+  <thead>
+    <tr class="home">
+      <th>Intent Id</th>
+      <th>Intent displayName</th>
+      <!-- <th>View Question</th>
+      <th>Edit</th> -->
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% intents.forEach(function(intent){ %>
+    <tr>
+      <td>
+        <%= intent.name %>
+      </td>
+      <td>
+        <%= intent.displayName %>
+      </td>
+      <!-- <td><a href="/questions/edit-question/<%= intent.name %>" data-toggle="modal" data-target="#myModal" id="<%= intent.name %>">Question</a></td>
+      <td><a href="/questions/edit-question/<%= intent.name %>">Edit</a></td> -->
+      <td><a class="confirmDeletion" href="/admin/questions/delete-question/<%= intent.name %>">Delete</a></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<% } else {%>
+<h3 class="text-center">There are no intents.</h3>
+<% }%>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review Question</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+    </div>
+
+  </div>
+</div>
+
+<%- include('../_layouts/adminfooter') %>
